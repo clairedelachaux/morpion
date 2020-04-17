@@ -4,7 +4,3 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL.h>
-#include "fenetre.c"
-#include "lejeu.h"
-#define TAILLE_FENETRE 800
-#define MARGE 20

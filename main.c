@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL.h>
-#include "fenetre.c"
+#include "fenetre.h"
 #define TAILLE_FENETRE 800
 #define MARGE 20
 /**
@@ -41,6 +41,7 @@ int main(int argc, char* argv []) {
     SDL_Renderer *renderer;
     SDL_Surface *icone;
     SDL_Rect cases[9];
+    lol();
 
     fenetre =SDL_CreateWindow("morpion", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, TAILLE_FENETRE, TAILLE_FENETRE, SDL_WINDOW_SHOWN);
 

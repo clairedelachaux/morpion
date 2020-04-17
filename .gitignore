@@ -1,2 +1,5 @@
 .idea
 cmake-build-debug/CMakeFiles
+cmake-build-debug/Makefile
+cmake-build-debug/OpenGLTest
+cmake-build-debug/OpenGLTest.cbp
