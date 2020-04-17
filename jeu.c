@@ -3,6 +3,7 @@
 //
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include <SDL.h>
 #include "fenetre.h"
 #include "jeu.h"
@@ -41,17 +42,20 @@ void casemorpion (struct SDL_Rect rectangles[],struct SDL_Renderer *renderer, in
 
 
 void tourordi(int grille[], int point[], struct SDL_Renderer *renderer, int *gagne, int *nbtour){
-    int m=0;
+    int m=0, n=0;
     if (!gagner(point, grille, renderer, gagne)){
         if (!empechegagner(point, grille, renderer, gagne)){
-            while(m<9) {
+            n= rand()%9;
+            m=(n+1)%9;
+            while(m != n) {
                 if (grille[m] == 0) {
                     grille[m] = -1;
                     rectangle(renderer, m / 3, m % 3);
                     addpoint(point, m / 3, m % 3, -1);
-                    m = 10;
+                    m = n;
+                } else{
+                    m =(m+1)%9;
                 }
-                m += 1;
             }
         }
     }

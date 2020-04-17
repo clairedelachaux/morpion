@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <SDL.h>
+#include <time.h>
 #include "jeu.h"
 #include "fenetre.h"
 /**
@@ -65,6 +66,7 @@ int main(int argc, char* argv []) {
 void  pause(int grille[], int point[], struct SDL_Renderer *renderer){
     int continuer = 1, sourix = 0, souriy = 0, k=0, nb=0, nbgagne = -1, nbtour = 0;
     SDL_Event event;
+    srand(time(NULL));
     while (continuer){
         SDL_WaitEvent(&event);
         switch (event.type) {
