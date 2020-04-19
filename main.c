@@ -4,6 +4,9 @@
 #include <time.h>
 #include "jeu.h"
 #include "fenetre.h"
+#define TAILLE_FENETRE 800
+#define MARGE 20
+
 /**
  * Pour installer la SDL pour CLion,
  *

@@ -5,6 +5,20 @@
 #define TAILLE_FENETRE 800
 #define MARGE 20
 
+void casemorpion (struct SDL_Rect rectangles[],struct SDL_Renderer *renderer, int taillefenetre){
+    int i, j=0;
+    for (i=0; i<3; i++){
+        for(j=0; j<3; j++){
+            rectangles[3*i+j].x = i*(taillefenetre-2*MARGE)/3+MARGE;
+            rectangles[3*i+j].y = j*(taillefenetre-2*MARGE)/3+MARGE;
+            rectangles[3*i+j].h = rectangles[3*i+j].w = (taillefenetre-2*MARGE)/3-2;
+        }
+    }
+    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(renderer, 230, 230, 225, 255);
+    SDL_RenderDrawRects(renderer, rectangles, 9);
+    SDL_RenderFillRects(renderer, rectangles, 9);
+}
 
 void croix (struct SDL_Renderer *renderer, int i, int j){
     int x1, x2, y1, y2;

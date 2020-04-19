@@ -25,36 +25,36 @@ int clicbon(int clicx, int clicy, int grille[], int point[], struct SDL_Renderer
         }
     }
 }
-void casemorpion (struct SDL_Rect rectangles[],struct SDL_Renderer *renderer, int taillefenetre){
-    int i, j=0;
-    for (i=0; i<3; i++){
-        for(j=0; j<3; j++){
-            rectangles[3*i+j].x = i*(taillefenetre-2*MARGE)/3+MARGE;
-            rectangles[3*i+j].y = j*(taillefenetre-2*MARGE)/3+MARGE;
-            rectangles[3*i+j].h = rectangles[3*i+j].w = (taillefenetre-2*MARGE)/3-2;
-        }
-    }
-    SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 230, 230, 225, 255);
-    SDL_RenderDrawRects(renderer, rectangles, 9);
-    SDL_RenderFillRects(renderer, rectangles, 9);
-}
+
 
 
 void tourordi(int grille[], int point[], struct SDL_Renderer *renderer, int *gagne, int *nbtour){
     int m=0, n=0;
     if (!gagner(point, grille, renderer, gagne)){
         if (!empechegagner(point, grille, renderer, gagne)){
-            n= rand()%9;
-            m=(n+1)%9;
-            while(m != n) {
-                if (grille[m] == 0) {
-                    grille[m] = -1;
-                    rectangle(renderer, m / 3, m % 3);
-                    addpoint(point, m / 3, m % 3, -1);
-                    m = n;
-                } else{
-                    m =(m+1)%9;
+            if (*nbtour==1){
+                if (grille[4]==0){
+                    rectangle(renderer, 1, 1);
+                    grille[4]=-1;
+                    addpoint(point, 1, 1, -1);
+                }else{
+                    n = rand()%4;
+                    rectangle(renderer, 2*(n/2), 2*(n%2));
+                    grille[6*(n/2)+2*(n%2)]=-1;
+                    addpoint(point, 6*(n/2), 2*(n%2), -1);
+                }
+            } else{
+                n= rand()%9;
+                m=(n+1)%9;
+                while(m != n) {
+                    if (grille[m] == 0) {
+                        grille[m] = -1;
+                        rectangle(renderer, m / 3, m % 3);
+                        addpoint(point, m / 3, m % 3, -1);
+                        m = n;
+                    } else{
+                        m =(m+1)%9;
+                    }
                 }
             }
         }
