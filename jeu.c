@@ -41,9 +41,14 @@ void tourordi(int grille[], int point[], struct SDL_Renderer *renderer, int *gag
                     n = rand()%4;
                     rectangle(renderer, 2*(n/2), 2*(n%2));
                     grille[6*(n/2)+2*(n%2)]=-1;
-                    addpoint(point, 6*(n/2), 2*(n%2), -1);
-                }
-            } else{
+                    addpoint(point, 2*(n/2), 2*(n%2), -1);
+                    }
+            }else if (*nbtour==3 && grille[0]+grille[2]+grille[6]+grille[8]==20) {
+                n = rand() % 4;
+                rectangle(renderer, (n + 1) / 2, (4 - n) % 3);
+                grille[2 * n + 1] = -1;
+                addpoint(point, (n + 1) / 2, (4 - n) % 3, -1);
+            }else {
                 n= rand()%9;
                 m=(n+1)%9;
                 while(m != n) {
